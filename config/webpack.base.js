@@ -39,6 +39,18 @@ module.exports = merge(webpackConfig ,{
   },
   module: {
     rules: [
+      { // 添加eslint检查代码规范
+        enforce: 'pre',
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        include: [APP_PATH],
+        loader: 'eslint-loader',
+        options: {
+          emitWarning: true, // 这个配置需要打开，才能在控制台输出warning信息
+          emitError: true, // 这个配置需要打开，才能在控制台输出error信息
+          fix: false // 是否自动修复，如果是，每次保存时会自动修复可以修复的部分
+        }
+      },
       {
         oneOf: [
           {

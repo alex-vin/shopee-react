@@ -30,5 +30,17 @@ module.exports = merge.smart(baseWebpackConfig, {
   ],
   devServer: {
     ...config.devServer
+  },
+  // 美化webpack输出信息
+  stats: {
+    colors: true,
+    children: false,
+    chunks: false,
+    chunkModules: false,
+    modules: false,
+    builtAt: false,
+    entrypoints: false,
+    assets: false,
+    version: false
   }
 })
