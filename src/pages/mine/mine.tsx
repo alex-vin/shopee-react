@@ -11,7 +11,7 @@ const Mine: React.FC<routeProps> = (routeProps: routeProps) => {
     const authed = !state.appStore.authed
     dispatch({ type: 'APP_AUTHED', data: authed })
     console.log(state, authed, routeProps)
-    // routeProps.history.push('/home/going')
+    routeProps.history.push('/home/going')
   }
   return <div onClick={handleClick}>Mine Page - {JSON.stringify(state)}</div>
 }

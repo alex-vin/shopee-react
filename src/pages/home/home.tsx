@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { routeProps } from '@/types/route'
 import { RenderRoutes } from '@/router/Render'
+import './home.less'
 
 import provider, { useCommonRedux } from '@/stores/common'
 import { reducer, initState } from '@/stores'

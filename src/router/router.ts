@@ -16,10 +16,10 @@ export const routes: RouteInterface[] = [
   {
     path: '/',
     exact: true,
-    component: Home,
+    component: Login,
     name: 'home',
     title: 'home',
-    auth: true,
+    auth: false,
   },
   {
     path: '/login',

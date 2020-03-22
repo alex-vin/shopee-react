@@ -16,6 +16,7 @@ export const RouteWithSubRoutes = (
       render={(props: RouteComponentProps) => {
         console.log(route.path, !route.auth, authed, route.path === authPath)
         if (!route.auth || authed || route.path === authPath) {
+          console.log('done')
           return <route.component {...props} routes={route.routes} />
         }
         return <Redirect to={{ pathname: authPath, state: { from: props.location } }} />

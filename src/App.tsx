@@ -1,5 +1,5 @@
 import React, { useReducer, useContext } from 'react'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { routes } from '@/router/router'
 import { RenderRoutes } from '@/router/Render'
 import '@/App.less'
@@ -15,7 +15,7 @@ const App: React.FC = () => {
   const [appState, appAction] = useReducer<any>(appReducer, appIniState)
   return (
     <AppContext.Provider value={{ state: appState, dispatch: appAction }}>
-      <BrowserRouter>{RenderRoutes(routes, authed, authPath)}</BrowserRouter>
+      <Router>{RenderRoutes(routes, authed, authPath)}</Router>
     </AppContext.Provider>
   )
 }
