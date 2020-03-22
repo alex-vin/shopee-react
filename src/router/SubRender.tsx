@@ -14,9 +14,8 @@ export const RouteWithSubRoutes = (
       path={route.path}
       exact={route.exact}
       render={(props: RouteComponentProps) => {
+        console.log(route.path, !route.auth, authed, route.path === authPath)
         if (!route.auth || authed || route.path === authPath) {
-          console.log('ok')
-          // pass the sub-routes down to keep nesting
           return <route.component {...props} routes={route.routes} />
         }
         return <Redirect to={{ pathname: authPath, state: { from: props.location } }} />

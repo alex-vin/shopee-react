@@ -1,8 +1,8 @@
 import React from 'react'
 import { Switch } from 'react-router-dom'
 import { RouteInterface } from '@/types/route'
-import { RouteWithSubRoutes } from './RouteWithSubRoutes'
-import NoMatch from '@/pages/status/404'
+import { RouteWithSubRoutes } from './SubRender'
+import NoMatch from '@/pages/404/404'
 
 export const RenderRoutes = (routes: RouteInterface[], authed: boolean, authPath = '/login') => {
   if (routes) {

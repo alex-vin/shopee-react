@@ -1,47 +1,70 @@
 import loadable from '@loadable/component'
 import { RouteInterface } from '@/types/route'
 
-import { RouteDemoA, RouteDemoB } from './demoComponent'
-
-// TODO: public路径从buildConfig里读取，注入环境变量使用
+// public路径从buildConfig里读取，注入环境变量使用
 export const basename = ''
+
+// 路由文件
+const Home = loadable(() => import('@/pages/home/home'))
+const Login = loadable(() => import('@/pages/login/login'))
+const NotFound = loadable(() => import('@/pages/404/404'))
+
+const MinePage = loadable(() => import('@/pages/mine/mine'))
+const GoingPage = loadable(() => import('@/pages/mine/going'))
 
 export const routes: RouteInterface[] = [
   {
     path: '/',
     exact: true,
-    component: loadable(() => import('@/pages/demo/HelloWorldDemo/HelloWorldDemoPage')),
+    component: Home,
     name: 'home',
-    title: 'react-home',
-  },
-  {
-    path: '/home',
-    component: loadable(() => import('@/pages/demo/HelloWorldDemo/HelloWorldDemoPage')),
-    exact: true,
-    name: 'home',
-    title: 'HelloWorld',
+    title: 'home',
     auth: true,
   },
   {
-    path: '/a',
-    component: RouteDemoA,
-    name: 'demoA',
-    title: 'DemoA',
+    path: '/login',
+    exact: true,
+    component: Login,
+    name: 'login',
+    title: 'login',
+    auth: false,
+  },
+  {
+    path: '/home',
+    component: Home,
+    name: 'home',
+    title: 'home',
+    auth: true,
     routes: [
       {
-        path: '/a/b',
-        component: RouteDemoB,
+        path: '/home/me',
         exact: true,
-        name: 'demoB',
-        title: 'DemoB',
+        component: MinePage,
+        name: 'mine',
+        title: 'mine',
+        auth: true,
+      },
+      {
+        path: '/home/going',
+        exact: true,
+        component: GoingPage,
+        name: 'going',
+        title: 'going',
         auth: true,
       },
     ],
   },
-  // 404 Not Found
+  {
+    path: '/404',
+    exact: true,
+    component: NotFound,
+    name: '404',
+    title: '404',
+    auth: false,
+  },
   {
     path: '*',
-    component: loadable(() => import('@/pages/status/404')),
+    component: NotFound,
     name: '404',
     title: '404',
   },

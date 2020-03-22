@@ -48,7 +48,7 @@ module.exports = merge(webpackConfig ,{
         options: {
           emitWarning: true, // 这个配置需要打开，才能在控制台输出warning信息
           emitError: true, // 这个配置需要打开，才能在控制台输出error信息
-          fix: false // 是否自动修复，如果是，每次保存时会自动修复可以修复的部分
+          fix: true // 是否自动修复，如果是，每次保存时会自动修复可以修复的部分
         }
       },
       {
@@ -95,6 +95,12 @@ module.exports = merge(webpackConfig ,{
               {
                 loader: 'less-loader',
                 options: { javascriptEnabled: true }
+              },
+              { // 引入全局less文件
+                loader: 'style-resources-loader',
+                options: {
+                  patterns: [path.resolve(__dirname, '../src/index.less')]
+                }
               }
             ]
           },
